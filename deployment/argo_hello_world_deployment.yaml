@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-hello-world
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: argo-hello-world
+  template:
+    metadata:
+      labels:
+        app: argo-hello-world
+    spec:
+      containers:
+      - image: ghcr.io/advancedhobbylab/argo_hello_world:latest
+        name: argo-hello-world
+        ports:
+        - containerPort: 80
